@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QMediaPlayer>
+#include <QSoundEffect>
 #include <QtWidgets>
 
 #include "pomodoro.hpp"
@@ -36,4 +38,7 @@ class Central : public QWidget {
     QVBoxLayout* spin_lyt;
     QList<QLabel*> spin_labels;
     QList<QSpinBox*> spinners;
+
+    // Notification sound
+    QSoundEffect* sound_player;
 };

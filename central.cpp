@@ -61,6 +61,10 @@ Central::Central(QWidget* parent) : QWidget(parent) {
 
     pomodoro = new Pomodoro(3, 3, 3, 2, this);
 
+    sound_player = new QSoundEffect(this);
+    sound_player->setSource(QUrl::fromLocalFile("./sounds/water_bell.wav"));
+    sound_player->setVolume(0.5);
+
     connect(start_btn, &QPushButton::clicked, pomodoro, [=] {
         pomodoro->setValues(spinners[0]->value(), spinners[1]->value(),
                             spinners[2]->value(), spinners[3]->value());
@@ -91,4 +95,5 @@ void Central::updateState(const State& state) {
             title_label->setText("Long Break");
             break;
     }
+    sound_player->play();
 }
