@@ -11,8 +11,7 @@ class Pomodoro : public QObject {
     Q_OBJECT
 
    public:
-    Pomodoro(int pom_dur, int short_break, int long_break, int pom_count,
-             QObject* parent = nullptr);
+    Pomodoro(QObject* parent = nullptr);
 
     void start();
     void pause();

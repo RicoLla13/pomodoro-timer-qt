@@ -59,10 +59,10 @@ Central::Central(QWidget* parent) : QWidget(parent) {
     main_layout->addWidget(separator);
     main_layout->addLayout(right_area);
 
-    pomodoro = new Pomodoro(3, 3, 3, 2, this);
+    pomodoro = new Pomodoro(this);
 
     sound_player = new QSoundEffect(this);
-    sound_player->setSource(QUrl::fromLocalFile("./sounds/water_bell.wav"));
+    sound_player->setSource(QUrl::fromLocalFile("./sounds/bell.wav"));
     sound_player->setVolume(0.5);
 
     connect(start_btn, &QPushButton::clicked, pomodoro, [=] {

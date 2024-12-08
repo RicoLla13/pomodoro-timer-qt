@@ -2,12 +2,11 @@
 
 #include <QDebug>
 
-Pomodoro::Pomodoro(int pom_dur, int short_break, int long_break,
-                   int pom_total_count, QObject* parent)
-    : pom_dur(pom_dur),
-      short_break(short_break),
-      long_break(long_break),
-      pom_total_count(pom_total_count),
+Pomodoro::Pomodoro(QObject* parent)
+    : pom_dur(0),
+      short_break(0),
+      long_break(0),
+      pom_total_count(0),
       pom_count(0),
       state(State::Pomodoro),
       remaining_time(0),
@@ -35,9 +34,9 @@ void Pomodoro::reset() {
 
 void Pomodoro::setValues(int _pom_dur, int _short_break, int _long_break,
                          int _pom_count) {
-    this->pom_dur = _pom_dur;
-    this->short_break = _short_break;
-    this->long_break = _long_break;
+    this->pom_dur = _pom_dur * 60;
+    this->short_break = _short_break * 60;
+    this->long_break = _long_break * 60;
     this->pom_total_count = _pom_count;
 }
 
