@@ -1,8 +1,11 @@
 #pragma once
 
+#include <qstackedwidget.h>
+
 #include <QtWidgets>
 
 #include "central.hpp"
+#include "settings.hpp"
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -19,7 +22,11 @@ class MainWindow : public QWidget {
     QPushButton* timer_btn;
     QPushButton* settings_btn;
 
-    Central* central_widget;
+    // Pages widget
+    QStackedWidget* pages_widget;
+    // Pages
+    Settings* settings_pg;
+    Central* timer_pg;
 
     QVBoxLayout* main_lyt;
 

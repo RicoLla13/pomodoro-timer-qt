@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 
 #include "central.hpp"
+#include "settings.hpp"
 
 MainWindow::MainWindow() : QWidget() {
     this->setObjectName("main-window");
@@ -34,11 +35,26 @@ MainWindow::MainWindow() : QWidget() {
     page_btn_lyt->addWidget(timer_btn);
     page_btn_lyt->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
 
-    central_widget = new Central(this);
+    settings_pg = new Settings(this);
+    timer_pg = new Central(this);
+
+    pages_widget = new QStackedWidget(this);
+    pages_widget->addWidget(timer_pg);
+    pages_widget->addWidget(settings_pg);
 
     main_lyt = new QVBoxLayout(this);
     main_lyt->addLayout(page_btn_lyt);
-    main_lyt->addWidget(central_widget);
+    main_lyt->addWidget(pages_widget);
+
+    connect(page_btn_grp, &QButtonGroup::buttonToggled, this,
+            [=](QAbstractButton* button, bool checked) {
+                if (checked) {
+                    if (button == timer_btn)
+                        pages_widget->setCurrentIndex(0);
+                    else if (button == settings_btn)
+                        pages_widget->setCurrentIndex(1);
+                }
+            });
 }
 
 void MainWindow::openStyleSheet() {

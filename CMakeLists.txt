@@ -30,6 +30,8 @@ qt_add_executable(${PROJECT_NAME}
     main_window.cpp
     central.hpp
     central.cpp
+    settings.hpp
+    settings.cpp
     pomodoro.cpp
     pomodoro.cpp
     resources.qrc
