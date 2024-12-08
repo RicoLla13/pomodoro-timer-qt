@@ -30,6 +30,9 @@ qt_add_executable(${PROJECT_NAME}
     main_window.cpp
     central.hpp
     central.cpp
+    pomodoro.cpp
+    pomodoro.cpp
+    utils.hpp
 )
 
 # Link the Qt6::Widgets library to the target

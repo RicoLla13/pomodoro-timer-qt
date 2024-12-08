@@ -2,6 +2,8 @@
 
 #include <QtWidgets>
 
+#include "pomodoro.hpp"
+
 class Central : public QWidget {
     Q_OBJECT
 
@@ -9,8 +11,11 @@ class Central : public QWidget {
     Central(QWidget* parent = nullptr);
 
    private slots:
+    void updateTime(const QString& time);
+    void updateState(const State& state);
 
    private:
+    Pomodoro* pomodoro;
     QHBoxLayout* main_layout;
     QVBoxLayout* left_area;
     QHBoxLayout* right_area;

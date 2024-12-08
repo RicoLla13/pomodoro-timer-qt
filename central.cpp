@@ -11,6 +11,7 @@ Central::Central(QWidget* parent) : QWidget(parent) {
     stop_btn = new QPushButton("Stop", this);
 
     title_label = new QLabel("Pomodoro Timer", this);
+    title_label->setMinimumWidth(230);
     title_label->setAlignment(Qt::AlignCenter);
 
     timer_label = new QLabel("00:00", this);
@@ -56,4 +57,34 @@ Central::Central(QWidget* parent) : QWidget(parent) {
     main_layout->addLayout(left_area);
     main_layout->addWidget(separator);
     main_layout->addLayout(right_area);
+
+    pomodoro = new Pomodoro(3, 3, 3, 2, this);
+
+    connect(start_btn, &QPushButton::clicked, pomodoro, &Pomodoro::start);
+    connect(stop_btn, &QPushButton::clicked, pomodoro, [=] {
+        title_label->setText("Pomodoro Timer");
+        timer_label->setText("00:00");
+        if (pomodoro != nullptr)
+            pomodoro->reset();
+    });
+    connect(pomodoro, &Pomodoro::timeChanged, this, &Central::updateTime);
+    connect(pomodoro, &Pomodoro::stateChanged, this, &Central::updateState);
+    connect(pomodoro, &Pomodoro::pomodoroComplete, this,
+            [=] { title_label->setText("Pomodoro Session Completed!"); });
+}
+
+void Central::updateTime(const QString& time) { timer_label->setText(time); }
+
+void Central::updateState(const State& state) {
+    switch (state) {
+        case State::Pomodoro:
+            title_label->setText("Working...");
+            break;
+        case State::ShortBreak:
+            title_label->setText("Short Break");
+            break;
+        case State::LongBreak:
+            title_label->setText("Long Break");
+            break;
+    }
 }
