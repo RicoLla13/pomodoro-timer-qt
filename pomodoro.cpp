@@ -33,6 +33,14 @@ void Pomodoro::reset() {
     remaining_time = 0;
 }
 
+void Pomodoro::setValues(int _pom_dur, int _short_break, int _long_break,
+                         int _pom_count) {
+    this->pom_dur = _pom_dur;
+    this->short_break = _short_break;
+    this->long_break = _long_break;
+    this->pom_total_count = _pom_count;
+}
+
 State Pomodoro::getCurrentState() const { return this->state; }
 
 QString Pomodoro::getRemainingTime() const {

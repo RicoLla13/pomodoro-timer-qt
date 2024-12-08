@@ -17,6 +17,7 @@ class Pomodoro : public QObject {
     void start();
     void pause();
     void reset();
+    void setValues(int pom_dur, int short_break, int long_break, int pom_count);
     State getCurrentState() const;
     QString getRemainingTime() const;
 

@@ -31,11 +31,12 @@ Central::Central(QWidget* parent) : QWidget(parent) {
     spin_lyt = new QVBoxLayout();
     spin_labels_lyt = new QVBoxLayout();
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         QLabel* label = new QLabel(spin_lbl_text[i], this);
 
         QSpinBox* spinner = new QSpinBox(this);
         spinner->setMaximum(max_vals[i]);
+        spinner->setValue(def_vals[i]);
         spinner->setMinimum(0);
         spinner->setSingleStep(1);
         spinner->setMinimumWidth(70);
@@ -60,12 +61,15 @@ Central::Central(QWidget* parent) : QWidget(parent) {
 
     pomodoro = new Pomodoro(3, 3, 3, 2, this);
 
-    connect(start_btn, &QPushButton::clicked, pomodoro, &Pomodoro::start);
+    connect(start_btn, &QPushButton::clicked, pomodoro, [=] {
+        pomodoro->setValues(spinners[0]->value(), spinners[1]->value(),
+                            spinners[2]->value(), spinners[3]->value());
+        pomodoro->start();
+    });
     connect(stop_btn, &QPushButton::clicked, pomodoro, [=] {
         title_label->setText("Pomodoro Timer");
         timer_label->setText("00:00");
-        if (pomodoro != nullptr)
-            pomodoro->reset();
+        pomodoro->reset();
     });
     connect(pomodoro, &Pomodoro::timeChanged, this, &Central::updateTime);
     connect(pomodoro, &Pomodoro::stateChanged, this, &Central::updateState);
