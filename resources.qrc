@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/window-close.svg</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file>style.qss</file>
+    </qresource>
+</RCC>

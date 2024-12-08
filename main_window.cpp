@@ -1,8 +1,53 @@
 #include "main_window.hpp"
 
-#include <QtWidgets>
+#include <QDebug>
+#include <QFile>
+#include <QMouseEvent>
+#include <QPushButton>
+#include <QVBoxLayout>
 
-MainWindow::MainWindow() : QMainWindow() {
+#include "central.hpp"
+
+MainWindow::MainWindow() : QWidget() {
+    this->setObjectName("main-window");
+    this->openStyleSheet();
+    this->setMinimumSize(400, 600);
+
+    timer_btn = new QPushButton("Timer", this);
+    timer_btn->setFixedWidth(75);
+    timer_btn->setObjectName("option-button");
+    timer_btn->setCheckable(true);
+    timer_btn->setChecked(true);
+    settings_btn = new QPushButton("Settings", this);
+    settings_btn->setFixedWidth(75);
+    settings_btn->setObjectName("option-button");
+    settings_btn->setCheckable(true);
+    settings_btn->setChecked(false);
+
+    page_btn_grp = new QButtonGroup();
+    page_btn_grp->addButton(timer_btn);
+    page_btn_grp->addButton(settings_btn);
+
+    page_btn_lyt = new QHBoxLayout();
+    page_btn_lyt->setSpacing(5);
+    page_btn_lyt->addWidget(settings_btn);
+    page_btn_lyt->addWidget(timer_btn);
+    page_btn_lyt->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
+
     central_widget = new Central(this);
-    this->setCentralWidget(central_widget);
+
+    main_lyt = new QVBoxLayout(this);
+    main_lyt->addLayout(page_btn_lyt);
+    main_lyt->addWidget(central_widget);
+}
+
+void MainWindow::openStyleSheet() {
+    QFile file(":/styles/style.qss");
+    if (file.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream ts(&file);
+        QString style = ts.readAll();
+        this->setStyleSheet(style);
+    } else {
+        qDebug() << "Could not load style sheet";
+    }
 }

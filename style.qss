@@ -1,0 +1,35 @@
+QWidget#main-window {
+    background-color: #242424;
+}
+
+QPushButton#quit-button {
+    width: 24px;               
+    height: 24px;              
+    border-radius: 12px;       
+    background-color: #393939;
+    border: none;              
+}
+
+QPushButton#quit-button:hover {
+    background-color: #575757;
+}
+
+QPushButton#quit-button:pressed {
+    background-color: #6e6e6e;
+}
+
+QPushButton#option-button {
+    width: 75;               
+    height: 28px;              
+    border-radius: 5px;       
+    background-color: #242424;
+    border: none;              
+}
+
+QPushButton#option-button:hover {
+    background-color: #333333;
+}
+
+QPushButton#option-button:checked {
+    background-color: #393939;
+}

@@ -1,13 +1,14 @@
-#include "main_window.hpp"
-#include <QtWidgets>
 #include <QApplication>
+#include <QtWidgets>
+
+#include "main_window.hpp"
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
 
-    MainWindow* my_window = new MainWindow();
+    MainWindow my_window;
 
-    my_window->show();
+    my_window.show();
 
     return a.exec();
 }
