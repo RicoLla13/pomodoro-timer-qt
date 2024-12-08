@@ -28,8 +28,8 @@ qt_add_executable(${PROJECT_NAME}
     main.cpp
     main_window.hpp
     main_window.cpp
-    central.hpp
-    central.cpp
+    timer.hpp
+    timer.cpp
     settings.hpp
     settings.cpp
     pomodoro.cpp

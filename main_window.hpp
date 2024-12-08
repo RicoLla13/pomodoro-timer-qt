@@ -4,8 +4,8 @@
 
 #include <QtWidgets>
 
-#include "central.hpp"
 #include "settings.hpp"
+#include "timer.hpp"
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -26,7 +26,7 @@ class MainWindow : public QWidget {
     QStackedWidget* pages_widget;
     // Pages
     Settings* settings_pg;
-    Central* timer_pg;
+    Timer* timer_pg;
 
     QVBoxLayout* main_lyt;
 

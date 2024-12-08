@@ -6,8 +6,8 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-#include "central.hpp"
 #include "settings.hpp"
+#include "timer.hpp"
 
 MainWindow::MainWindow() : QWidget() {
     this->setObjectName("main-window");
@@ -36,7 +36,7 @@ MainWindow::MainWindow() : QWidget() {
     page_btn_lyt->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
 
     settings_pg = new Settings(this);
-    timer_pg = new Central(this);
+    timer_pg = new Timer(this);
 
     pages_widget = new QStackedWidget(this);
     pages_widget->addWidget(timer_pg);
@@ -55,6 +55,10 @@ MainWindow::MainWindow() : QWidget() {
                         pages_widget->setCurrentIndex(1);
                 }
             });
+
+    connect(timer_pg, &Timer::requestSettings, settings_pg,
+            &Settings::recieveRequest);
+    connect(settings_pg, &Settings::sendData, timer_pg, &Timer::recieveData);
 }
 
 void MainWindow::openStyleSheet() {
