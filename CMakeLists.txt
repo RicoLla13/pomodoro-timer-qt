@@ -5,7 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 cmake_minimum_required(VERSION 3.16)
 
 # Set the project name and version
-set(PROJECT_NAME template)
+set(PROJECT_NAME pomodoro-qt)
 
 # Enable Qt resource handling
 set(CMAKE_AUTORCC ON)
@@ -28,6 +28,8 @@ qt_add_executable(${PROJECT_NAME}
     main.cpp
     main_window.hpp
     main_window.cpp
+    central.hpp
+    central.cpp
 )
 
 # Link the Qt6::Widgets library to the target

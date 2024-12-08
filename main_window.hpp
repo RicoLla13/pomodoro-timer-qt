@@ -2,7 +2,9 @@
 
 #include <QtWidgets>
 
-class MainWindow : public QWidget {
+#include "central.hpp"
+
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
    public:
@@ -11,4 +13,5 @@ class MainWindow : public QWidget {
    private slots:
 
    private:
+    Central* central_widget;
 };

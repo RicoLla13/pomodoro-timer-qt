@@ -2,4 +2,7 @@
 
 #include <QtWidgets>
 
-MainWindow::MainWindow() : QWidget() {}
+MainWindow::MainWindow() : QMainWindow() {
+    central_widget = new Central(this);
+    this->setCentralWidget(central_widget);
+}
