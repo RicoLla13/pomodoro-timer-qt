@@ -26,7 +26,7 @@ class Timer : public QWidget {
     // Page area
     QHBoxLayout* button_area;
     QPushButton* start_btn;
-    QPushButton* stop_btn;
+    QPushButton* reset_btn;
     NordicClock* clock;
 
     // Notification sound

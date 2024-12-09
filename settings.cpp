@@ -20,22 +20,22 @@ Settings::Settings(QWidget* parent) : QWidget(parent) {
     num_lbl->setObjectName("settings-label");
 
     pom_slid = new QSlider(Qt::Horizontal, this);
-    pom_slid->setRange(0, 59);
+    pom_slid->setRange(1, 59);
     pom_slid->setValue(25);
     pom_slid->setSingleStep(1);
 
     short_slid = new QSlider(Qt::Horizontal, this);
-    short_slid->setRange(0, 59);
+    short_slid->setRange(1, 59);
     short_slid->setValue(5);
     short_slid->setSingleStep(1);
 
     long_slid = new QSlider(Qt::Horizontal, this);
-    long_slid->setRange(0, 59);
+    long_slid->setRange(1, 59);
     long_slid->setValue(10);
     long_slid->setSingleStep(1);
 
     num_slid = new QSlider(Qt::Horizontal, this);
-    num_slid->setRange(0, 10);
+    num_slid->setRange(1, 10);
     num_slid->setValue(4);
     num_slid->setSingleStep(1);
 

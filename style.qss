@@ -3,7 +3,7 @@ QWidget#main-window {
 }
 
 QPushButton#option-button {
-    width: 75;               
+    width: 75px;               
     height: 28px;              
     border-radius: 5px;       
     background-color: #242424;
@@ -16,6 +16,34 @@ QPushButton#option-button:hover {
 
 QPushButton#option-button:checked {
     background-color: #393939;
+}
+
+QPushButton#start-button {
+    border-radius: 25px;       
+    background-color: #c88800;
+    border: none;              
+}
+
+QPushButton#start-button:hover {
+    background-color: #cd9419;
+}
+
+QPushButton#start-button:pressed {
+    background-color: #a06d00;
+}
+
+QPushButton#reset-button {
+    border-radius: 15px;       
+    background-color: #494949;
+    border: none;              
+}
+
+QPushButton#reset-button:hover {
+    background-color: #535353;
+}
+
+QPushButton#reset-button:pressed {
+    background-color: #717171;
 }
 
 QLabel#settings-label {
@@ -39,4 +67,9 @@ QLabel#timer-label {
     font-size: 60px;
     color: #ffffff;
     font-weight: bold;
+}
+
+QWidget#invisible-box {
+    background: transparent;
+    border: none;
 }
