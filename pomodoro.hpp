@@ -24,9 +24,9 @@ class Pomodoro : public QObject {
     void onTimeout();
 
    signals:
-    void timeChanged(const QString& time);
-    void stateChanged(const State& state);
+    void stateChanged();
     void pomodoroComplete();
+    void updateClock(float percent, int time, State state);
 
    private:
     int pom_dur;

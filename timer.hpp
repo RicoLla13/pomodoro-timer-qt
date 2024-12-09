@@ -4,6 +4,7 @@
 #include <QSoundEffect>
 #include <QtWidgets>
 
+#include "nordic_clock.hpp"
 #include "pomodoro.hpp"
 
 class Timer : public QWidget {
@@ -11,10 +12,6 @@ class Timer : public QWidget {
 
    public:
     Timer(QWidget* parent = nullptr);
-
-   private slots:
-    void updateTime(const QString& time);
-    void updateState(const State& state);
 
    public slots:
     void recieveData(SettingsVal* data);
@@ -26,12 +23,11 @@ class Timer : public QWidget {
     Pomodoro* pomodoro;
     QVBoxLayout* main_layout;
 
-    // Left area
-    QLabel* title_label;
-    QLabel* timer_label;
+    // Page area
     QHBoxLayout* button_area;
     QPushButton* start_btn;
     QPushButton* stop_btn;
+    NordicClock* clock;
 
     // Notification sound
     QSoundEffect* sound_player;

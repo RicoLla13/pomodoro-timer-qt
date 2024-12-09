@@ -20,7 +20,7 @@ void Pomodoro::start() {
         remaining_time = pom_dur;
 
     timer->start(1000);
-    emit stateChanged(getCurrentState());
+    emit stateChanged();
 }
 
 void Pomodoro::pause() { timer->stop(); }
@@ -30,6 +30,7 @@ void Pomodoro::reset() {
     pom_count = 0;
     state = State::Pomodoro;
     remaining_time = 0;
+    emit updateClock(100, remaining_time, state);
 }
 
 void Pomodoro::setValues(int _pom_dur, int _short_break, int _long_break,
@@ -51,6 +52,23 @@ QString Pomodoro::getRemainingTime() const {
 
 void Pomodoro::onTimeout() {
     if (remaining_time > 0) {
+        float percent;
+        switch (state) {
+            case State::Pomodoro:
+                percent = static_cast<float>(remaining_time) /
+                          static_cast<float>(pom_dur);
+                break;
+            case State::ShortBreak:
+                percent = static_cast<float>(remaining_time) /
+                          static_cast<float>(short_break);
+                break;
+            case State::LongBreak:
+                percent = static_cast<float>(remaining_time) /
+                          static_cast<float>(long_break);
+                break;
+        }
+        emit updateClock(percent, remaining_time, state);
+
         remaining_time--;
     } else {
         switch (this->state) {
@@ -63,7 +81,7 @@ void Pomodoro::onTimeout() {
                     this->state = State::ShortBreak;
                     this->remaining_time = short_break;
                 }
-                emit stateChanged(getCurrentState());
+                emit stateChanged();
                 break;
             case State::LongBreak:
                 emit pomodoroComplete();
@@ -72,9 +90,9 @@ void Pomodoro::onTimeout() {
             case State::ShortBreak:
                 this->state = State::Pomodoro;
                 this->remaining_time = pom_dur;
-                emit stateChanged(getCurrentState());
+                emit stateChanged();
                 break;
         }
+        emit updateClock(0, 0, state);
     }
-    emit timeChanged(getRemainingTime());
 }

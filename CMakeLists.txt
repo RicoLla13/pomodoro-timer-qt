@@ -34,6 +34,8 @@ qt_add_executable(${PROJECT_NAME}
     settings.cpp
     pomodoro.cpp
     pomodoro.cpp
+    nordic_clock.hpp
+    nordic_clock.cpp
     resources.qrc
     utils.hpp
 )

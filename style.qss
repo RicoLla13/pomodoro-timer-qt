@@ -28,3 +28,15 @@ QLabel#settings-val {
     color: #ffffff;
     font-weight: bold;
 }
+
+QLabel#title-label {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+QLabel#timer-label {
+    font-size: 60px;
+    color: #ffffff;
+    font-weight: bold;
+}

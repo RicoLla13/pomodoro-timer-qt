@@ -72,6 +72,11 @@ Settings::Settings(QWidget* parent) : QWidget(parent) {
     main_lyt->addWidget(num_val);
     main_lyt->addWidget(num_slid);
 
+    updateVal(pom_val, pom_slid->value());
+    updateVal(short_val, short_slid->value());
+    updateVal(long_val, long_slid->value());
+    updateVal(num_val, num_slid->value());
+
     connect(pom_slid, &QSlider::valueChanged, this,
             [=](int value) { updateVal(pom_val, value); });
     connect(short_slid, &QSlider::valueChanged, this,
