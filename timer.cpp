@@ -56,7 +56,7 @@ Timer::Timer(QWidget* parent) : QWidget(parent) {
     connect(pomodoro, &Pomodoro::stateChanged, this,
             [=] { sound_player->play(); });
     connect(pomodoro, &Pomodoro::pomodoroComplete, this,
-            [=] { clock->updateAngle(100, 0, State::Pomodoro); });
+            [=] { sound_player->play(); });
     connect(pomodoro, &Pomodoro::updateClock, clock, &NordicClock::updateAngle);
 }
 

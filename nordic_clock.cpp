@@ -79,5 +79,10 @@ void NordicClock::updateAngle(float percent, int time, State state) {
             break;
     }
 
+    if (time == -1) {
+        timer_label->setText("00:00");
+        title_label->setText("Complete!");
+    }
+
     this->repaint();
 }
