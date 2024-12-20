@@ -45,8 +45,10 @@ Timer::Timer(QWidget* parent) : QWidget(parent) {
 
     pomodoro = new Pomodoro(this);
 
+    QString exe_path = QCoreApplication::applicationDirPath();
+    QString audio_path = exe_path + "/sounds/bell.wav";
     sound_player = new QSoundEffect(this);
-    sound_player->setSource(QUrl::fromLocalFile("./sounds/bell.wav"));
+    sound_player->setSource(QUrl::fromLocalFile(audio_path));
     sound_player->setVolume(1.0);
 
     connect(start_btn, &QPushButton::clicked, pomodoro,
