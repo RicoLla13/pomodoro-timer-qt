@@ -5,7 +5,7 @@
 #include <QObject>
 #include <QTimer>
 
-#include "utils.hpp"
+#include "../utils.hpp"
 
 class Pomodoro : public QObject {
     Q_OBJECT

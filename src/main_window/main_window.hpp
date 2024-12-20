@@ -4,8 +4,8 @@
 
 #include <QtWidgets>
 
-#include "settings.hpp"
-#include "timer.hpp"
+#include "../settings/settings.hpp"
+#include "../timer/timer.hpp"
 
 class MainWindow : public QWidget {
     Q_OBJECT

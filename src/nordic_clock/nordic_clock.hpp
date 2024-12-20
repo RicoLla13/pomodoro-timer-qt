@@ -4,7 +4,7 @@
 
 #include <QtWidgets>
 
-#include "utils.hpp"
+#include "../utils.hpp"
 
 class NordicClock : public QWidget {
     Q_OBJECT

@@ -11,7 +11,10 @@ set(PROJECT_NAME pomodoro-qt)
 set(CMAKE_AUTORCC ON)
 
 # Define the project
-project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
+project(
+  ${PROJECT_NAME}
+  VERSION 1.0.0
+  LANGUAGES CXX)
 
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -24,26 +27,25 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets Multimedia Svg)
 qt_standard_project_setup()
 
 # Add the executable, including the resource file
-qt_add_executable(${PROJECT_NAME}
-    main.cpp
-    main_window.hpp
-    main_window.cpp
-    timer.hpp
-    timer.cpp
-    settings.hpp
-    settings.cpp
-    pomodoro.cpp
-    pomodoro.cpp
-    nordic_clock.hpp
-    nordic_clock.cpp
-    resources.qrc
-    utils.hpp
-)
+qt_add_executable(
+  ${PROJECT_NAME}
+  src/main.cpp
+  src/main_window/main_window.hpp
+  src/main_window/main_window.cpp
+  src/timer/timer.hpp
+  src/timer/timer.cpp
+  src/settings/settings.hpp
+  src/settings/settings.cpp
+  src/pomodoro/pomodoro.cpp
+  src/pomodoro/pomodoro.cpp
+  src/nordic_clock/nordic_clock.hpp
+  src/nordic_clock/nordic_clock.cpp
+  src/utils.hpp
+  res/resources.qrc)
 
 # Link the Qt6::Widgets library to the target
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets Qt6::Multimedia Qt6::Svg)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets Qt6::Multimedia
+                                              Qt6::Svg)
 
 # Set executable properties for Windows (optional)
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    WIN32_EXECUTABLE ON
-)
+set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE ON)

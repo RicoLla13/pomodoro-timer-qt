@@ -6,9 +6,6 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-#include "settings.hpp"
-#include "timer.hpp"
-
 MainWindow::MainWindow() : QWidget() {
     this->setObjectName("main-window");
     this->openStyleSheet();

@@ -4,7 +4,7 @@
 
 #include <QtWidgets>
 
-#include "utils.hpp"
+#include "../utils.hpp"
 
 class Settings : public QWidget {
     Q_OBJECT

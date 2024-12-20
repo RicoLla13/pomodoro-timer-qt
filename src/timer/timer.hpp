@@ -4,8 +4,8 @@
 #include <QSoundEffect>
 #include <QtWidgets>
 
-#include "nordic_clock.hpp"
-#include "pomodoro.hpp"
+#include "../nordic_clock/nordic_clock.hpp"
+#include "../pomodoro/pomodoro.hpp"
 
 class Timer : public QWidget {
     Q_OBJECT
